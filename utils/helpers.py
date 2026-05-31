@@ -26,7 +26,7 @@ def login(driver, username=None, password=None):
     driver.find_element(By.NAME, "password").send_keys(password)
     driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
 
-def wait_for_element(driver, by, value, timeout=10):
+def wait_for_element(driver, by, value, timeout=30):
     """
     Așteaptă până când un element apare în pagină.
     Util când pagina se încarcă mai lent.

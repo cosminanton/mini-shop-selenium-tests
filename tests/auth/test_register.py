@@ -1,11 +1,13 @@
 import pytest
 import os
+import time
 from pages.register_page import RegisterPage
 
 @pytest.mark.auth
 class TestRegister:
     """
     Teste pentru pagina de înregistrare.
+
     """
 
     def test_register_new_user(self, driver):
@@ -13,10 +15,13 @@ class TestRegister:
         Scenariul: Un utilizator nou se înregistrează cu succes.
         Așteptat: Este redirectat la homepage.
         """
+        # Username unic la fiecare rulare
+        username = f"testuser_{int(time.time())}"
+        
         page = RegisterPage(driver)
         page.register(
-            username=os.getenv("TEST_USERNAME", "testuser"),
-            email=os.getenv("TEST_EMAIL", "test@test.com"),
+            username=username,
+            email=f"{username}@test.com",
             password=os.getenv("TEST_PASSWORD", "testpass123")
         )
 
@@ -28,10 +33,12 @@ class TestRegister:
         Scenariul: După register, userul ajunge pe homepage.
         Așteptat: URL-ul e homepage-ul.
         """
+        username = f"testuser2_{int(time.time())}"
+        
         page = RegisterPage(driver)
         page.register(
-            username="testuser2",
-            email="test2@test.com",
+            username=username,
+            email=f"{username}@test.com",
             password="testpass123"
         )
 

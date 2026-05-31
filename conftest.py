@@ -35,6 +35,13 @@ def driver():
     
     driver.quit()  # închide browser-ul la final
 
+@pytest.fixture(scope="session", autouse=True)
+def warmup(driver):
+    """Trezeste Render inainte de teste"""
+    import time
+    driver.get("https://cosminstore.onrender.com")
+    time.sleep(5)  # așteaptă puțin pentru a se asigura că Render e trezit
+    
 @pytest.fixture
 def base_url():
     return BASE_URL
