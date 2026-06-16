@@ -6,7 +6,7 @@ from pages.register_page import RegisterPage
 @pytest.mark.auth
 class TestRegister:
     """
-    Teste pentru pagina de înregistrare.
+    Teste ptr pagina de înregistrare.
 
     """
 
